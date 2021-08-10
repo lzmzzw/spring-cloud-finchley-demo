@@ -1,0 +1,30 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config-server-eureka
+
+  # http://localhost:8888/config-client/dev
+  cloud:
+    config:
+      server:
+        git:
+          # 配置git仓库地址
+          uri: https://gitee.com/lzmzzw/config
+#          uri: https://github.com/forezp/SpringcloudConfig/
+          # 配置仓库中的文件路径
+          searchPaths: respo
+          # 如果Git仓库为公开仓库，可以不填写用户名和密码
+          username:
+          password:
+      # 配置仓库的分支
+      label: master
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+
+

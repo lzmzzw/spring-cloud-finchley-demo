@@ -1,0 +1,28 @@
+server:
+  port: 8881
+
+spring:
+  application:
+    # 客户端的spring.application.name需要和Git服务器上的配置文件名相对应，本例中，配置文件应为config-client-dev.yml或config-client-dev.properties
+    name: config-client-eureka
+
+  # 客户端加载到的配置文件的配置项会覆盖本项目已有配置
+  cloud:
+    config:
+      # 配置仓库的分支
+      label: master
+      # 测试环境dev
+      profile: dev
+      discovery:
+        enabled: true
+        service-id: config-server-eureka
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+
+
+
+

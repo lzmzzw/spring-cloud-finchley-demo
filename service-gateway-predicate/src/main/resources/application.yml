@@ -1,0 +1,112 @@
+server:
+  port: 8080
+
+# 引入依赖spring-boot-starter-actuator，并将gateway端点暴露
+# http://localhost:8080/actuator/gateway/routes
+management:
+  endpoints:
+    web:
+      exposure:
+        include: gateway
+
+spring:
+  profiles:
+#    active: before_route
+#    active: header_route
+#    active: cookie_route
+#    active: host_route
+#    active: method_route
+    active: path_route
+#    active: query_route
+
+---
+# 匹配上海时间2021-08-09 18:00:00.000之前的请求
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: before_route
+        uri: http://httpbin.org:80/get
+        predicates:
+        - Before=2021-08-09T18:00:00.000+08:00[Asia/Shanghai]
+  profiles: before_route
+
+---
+# 匹配header名和header值，值可以使用正则表达式
+# curl -H X-Request-Id:1 localhost:8080
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: header_route
+        uri: http://httpbin.org:80/get
+        predicates:
+        - Header=X-Request-Id, \d+
+  profiles: header_route
+
+---
+# 匹配cookie名和cookie值，值可以使用正则表达式
+# curl -H Cookie:name=lz localhost:8080
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: cookie_route
+        uri: http://httpbin.org:80/get
+        predicates:
+        - Cookie=name, lz
+  profiles: cookie_route
+
+---
+# 匹配host的请求
+# curl -H Host:www.lz.com localhost:8080
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: host_route
+        uri: http://httpbin.org:80/get
+        predicates:
+        - Host=**.lz.com
+  profiles: host_route
+
+---
+# 匹配post请求
+# curl -X POST localhost:8080
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: method_route
+        uri: http://httpbin.org:80/post
+        predicates:
+        - Method=POST
+  profiles: method_route
+
+---
+# SpEL表达式匹配路径，如/foo/1、 /foo/bar
+# curl localhost:8080/foo/1、curl localhost:8080/foo/bar
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: path_route
+        uri: http://httpbin.org:80/get
+        predicates:
+        - Path=/foo/{segment}
+  profiles: path_route
+
+---
+# 匹配参数名和参数值，值可以使用正则表达式
+# 如果只填参数名，则值可以为任意值
+# curl localhost:8080?foo=bar
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: query_route
+        uri: http://httpbin.org:80/get
+        predicates:
+        - Query=foo, bar
+  profiles: query_route
+

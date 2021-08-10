@@ -1,0 +1,29 @@
+server:
+  port: 8763
+
+spring:
+  application:
+    # 服务名称，服务与服务之间相互调用一般都是根据这个name
+    name: eureka-client-hystrix-dashboard-2
+
+eureka:
+  client:
+    # registerWithEureka和fetchRegistry为true来表明自己是一个eureka client
+    # 启动类注解@EnableEurekaServer，则默认是false，不注册到实例列表中；如果注解@EnableEurekaClient应用，则默认是true
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      # 注明自己的服务注册中心的地址
+      defaultZone: http://localhost:8761/eureka/
+
+      # 可以配置多个url，将client注册到集群中
+      # defaultZone: http://Server1.ip:server1.port/eureka/,http://Server2.ip:server2.port/eureka/,http://Server3.ip:server3.port/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      cors:
+        allowed-origins: "*"
+        allowed-methods: "*"
