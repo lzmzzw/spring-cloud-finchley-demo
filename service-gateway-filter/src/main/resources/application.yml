@@ -32,7 +32,7 @@ spring:
 
 ---
 # 将/foo/(?.*)重写为{segment}，然后转发到https://blog.csdn.net
-# 访问localhost:8080/foo/lzmzzw
+# 访问localhost:8080/foo/lz
 spring:
   cloud:
     gateway:

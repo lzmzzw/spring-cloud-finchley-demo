@@ -18,4 +18,3 @@ eureka:
 
       # 可以配置多个url，将client注册到集群中
       # defaultZone: http://Server1.ip:server1.port/eureka/,http://Server2.ip:server2.port/eureka/,http://Server3.ip:server3.port/eureka/
-

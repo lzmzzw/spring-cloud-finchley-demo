@@ -24,7 +24,7 @@ spring:
 
   # 配置rabbitmq
   rabbitmq:
-    host: 192.168.56.3
+    host: localhost
     port: 5672
     username: lz
     password: 123456

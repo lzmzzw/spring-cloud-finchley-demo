@@ -1,6 +1,5 @@
 package com.lz.gateway.filter.globle;
 
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
@@ -13,7 +12,7 @@ import reactor.core.publisher.Mono;
 @Component
 public class PostFilter implements GlobalFilter, Ordered {
     private static final String REQUEST_TIME_BEGIN = "requestTimeBegin";
-    private Logger logger = LoggerFactory.getLogger(PostFilter.class);
+    private static final Logger logger = LoggerFactory.getLogger(PostFilter.class);
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {

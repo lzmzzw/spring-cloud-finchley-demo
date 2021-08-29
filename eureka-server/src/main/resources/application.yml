@@ -10,8 +10,12 @@ eureka:
   instance:
     hostname: localhost
 
-    # 如果配置prefer-ip-address为true，则euraka不需要配置hostname，而自动识别ip地址作为配置中心地址
+    # 如果配置prefer-ip-address为true，则eureka不需要配置hostname，而自动识别ip地址作为配置中心地址
     # prefer-ip-address: true
+
+  # 关闭自保护模式
+  server:
+    enable-self-preservation: false
 
   client:
     # registerWithEureka和fetchRegistry为false来表明自己是一个eureka server

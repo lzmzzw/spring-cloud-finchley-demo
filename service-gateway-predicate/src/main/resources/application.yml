@@ -1,7 +1,7 @@
 server:
   port: 8080
 
-# 引入依赖spring-boot-starter-actuator，并将gateway端点暴露
+# 引入依赖spring-boot-starter-actuator，并将gateway端点暴露，可以查看路由
 # http://localhost:8080/actuator/gateway/routes
 management:
   endpoints:
@@ -109,4 +109,3 @@ spring:
         predicates:
         - Query=foo, bar
   profiles: query_route
-

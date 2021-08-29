@@ -6,7 +6,6 @@ import org.springframework.web.client.RestTemplate;
 
 @Service
 public class HelloService {
-
     @Autowired
     private RestTemplate restTemplate;
 
@@ -14,5 +13,3 @@ public class HelloService {
         return restTemplate.getForObject("http://eureka-client/hi?name=" + name, String.class);
     }
 }
-
-

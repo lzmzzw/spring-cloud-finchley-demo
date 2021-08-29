@@ -8,7 +8,6 @@ import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 public class ServiceZipkinApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(ServiceZipkinApplication.class, args);
     }
@@ -19,5 +18,4 @@ public class ServiceZipkinApplication {
     RestTemplate restTemplate() {
         return new RestTemplate();
     }
-
 }

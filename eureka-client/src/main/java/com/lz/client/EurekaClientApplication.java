@@ -8,12 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-// 注解@EnableEurekaClient 表明自己是一个eurekaclient
+// 注解@EnableEurekaClient 表明自己是一个eureka client
 @EnableEurekaClient
 @SpringBootApplication
 @RestController
 public class EurekaClientApplication {
-
     @Value("${server.port}")
     String port;
 
@@ -25,5 +24,4 @@ public class EurekaClientApplication {
     public String home(@RequestParam(value = "name", defaultValue = "lz") String name) {
         return "hi " + name + " ,i am from port:" + port;
     }
-
 }

@@ -10,7 +10,6 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 @EnableEurekaClient
 public class ServiceRibbonApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(ServiceRibbonApplication.class, args);
     }
@@ -21,5 +20,4 @@ public class ServiceRibbonApplication {
     RestTemplate restTemplate() {
         return new RestTemplate();
     }
-
 }

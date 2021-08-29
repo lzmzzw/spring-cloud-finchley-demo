@@ -10,10 +10,9 @@ import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 @EnableEurekaClient
-//注解@EnableHystrix注解开启Hystrix
+// 注解@EnableHystrix开启Hystrix
 @EnableHystrix
 public class ServiceRibbonApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(ServiceRibbonApplication.class, args);
     }
@@ -24,5 +23,4 @@ public class ServiceRibbonApplication {
     RestTemplate restTemplate() {
         return new RestTemplate();
     }
-
 }

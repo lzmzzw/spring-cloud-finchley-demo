@@ -13,7 +13,7 @@ import reactor.core.publisher.Mono;
 @Component
 public class PreFilter implements GlobalFilter, Ordered {
     private static final String REQUEST_TIME_BEGIN = "requestTimeBegin";
-    private Logger logger = LoggerFactory.getLogger(PreFilter.class);
+    private static final Logger logger = LoggerFactory.getLogger(PreFilter.class);
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {

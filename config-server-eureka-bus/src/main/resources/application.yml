@@ -12,7 +12,6 @@ spring:
         git:
           # 配置git仓库地址
           uri: https://gitee.com/lzmzzw/config
-#          uri: https://github.com/forezp/SpringcloudConfig/
           # 配置仓库中的文件路径
           searchPaths: respo
           # 如果Git仓库为公开仓库，可以不填写用户名和密码
@@ -28,7 +27,7 @@ spring:
 
   # 配置rabbitmq
   rabbitmq:
-    host: 192.168.56.3
+    host: localhost
     port: 5672
     username: lz
     password: 123456
