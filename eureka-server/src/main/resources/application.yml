@@ -1,0 +1,30 @@
+server:
+  port: 8761
+
+spring:
+  application:
+    # 服务名称，服务与服务之间相互调用一般都是根据这个name
+    name: eurka-server
+
+eureka:
+  instance:
+    hostname: localhost
+
+    # 如果配置prefer-ip-address为true，则eureka不需要配置hostname，而自动识别ip地址作为配置中心地址
+    # prefer-ip-address: true
+
+  # 关闭自保护模式
+  server:
+    enable-self-preservation: false
+
+  client:
+    # registerWithEureka和fetchRegistry为false来表明自己是一个eureka server
+    # 启动类注解@EnableEurekaServer，则默认是false，不注册到实例列表中；如果注解@EnableEurekaClient应用，则默认是true
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      # 设置与Eureka Server交互的地址，查询服务和注册服务都需要依赖这个地址
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+      # 可以配置多个url，作为eureka server集群
+      # defaultZone: http://Server1.ip:server1.port/eureka/,http://Server2.ip:server2.port/eureka/,http://Server3.ip:server3.port/eureka/
